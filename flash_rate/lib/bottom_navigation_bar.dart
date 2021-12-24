@@ -2,6 +2,7 @@
 import 'package:flash_rate/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'home.dart';
 
 class bottomNavigationBar extends StatefulWidget {
   const bottomNavigationBar({Key? key}) : super(key: key);
@@ -36,11 +37,14 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
     ),
   ];
   final screens = [
-    const HomePage(),
-    const HomePage(),
-    const HomePage(),
-    const HomePage(),
-    const HomePage(),
+      HomePage(),
+      // HomeRate(),
+      HomePage(),
+      HomeRate()
+    //  HeartRate(),
+    // const HomePage(),
+    // const HomePage(),
+    // const HomePage(),
   ];
   @override
   Widget build(BuildContext context) {

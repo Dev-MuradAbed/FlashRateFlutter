@@ -38,10 +38,15 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_bluetooth_serial:
   flutter_svg:
   curved_navigation_bar:
+  camera: 
+  shared_preferences:
+  path_provider:
+  velocity_x:
+  wakelock:
+  charts_flutter:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
