@@ -37,10 +37,18 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
     ),
   ];
   final screens = [
-      HomePage(),
-      // HomeRate(),
-      HomePage(),
-      HomeRate()
+    const HomePage(),
+    const HomePage(),
+     HomeRate(),
+    const HomePage(),
+    const HomePage(),
+    // HomePage(),
+    // // HomeRate(),
+    // HomePage(),
+    // HomePage(),
+    // HomePage(),
+    // HomePage(),
+    // HomeRate()
     //  HeartRate(),
     // const HomePage(),
     // const HomePage(),
