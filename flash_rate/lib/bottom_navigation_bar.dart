@@ -2,6 +2,7 @@
 import 'package:flash_rate/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'booldpreesure.dart';
 import 'home.dart';
 
 class bottomNavigationBar extends StatefulWidget {
@@ -40,7 +41,7 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
     const HomePage(),
     const HomePage(),
      HomeRate(),
-    const HomePage(),
+     HomeBooldPres(),
     const HomePage(),
     // HomePage(),
     // // HomeRate(),

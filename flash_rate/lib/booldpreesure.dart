@@ -12,15 +12,16 @@ import 'package:wakelock/wakelock.dart';
 import 'chart.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'dart:math' as math;
 
-class HomeRate extends StatefulWidget {
+class HomeBooldPres extends StatefulWidget {
   @override
   HomeRateView createState() {
     return HomeRateView();
   }
 }
 
-class HomeRateView extends State<HomeRate>
+class HomeRateView extends State<HomeBooldPres>
     with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   // WidgetsBindingObserver is used to know if our app is in background or active or closed
   bool _toggled = false; // toggle button value
@@ -30,6 +31,8 @@ class HomeRateView extends State<HomeRate>
   late AnimationController _animationController;
   double _buttonScale = 1;
   String buttonText = "Check Heart Rate";
+  int Sp = 0;
+  int DP = 0;
   int _bpm = 0; // beats per minute
   int _fs = 30; // sampling frequency (fps)
   int _windowLen = 30 * 6; // window length to display - 6 seconds
@@ -142,7 +145,7 @@ class HomeRateView extends State<HomeRate>
                                 child: Text(
                                   _toggled
                                       ? "Cover both the camera and the flash with your finger"
-                                      : "Camera feed will display here",
+                                      : "Camera feed will display here boold",
                                   style: TextStyle(
                                       backgroundColor: _toggled
                                           ? Colors.white
@@ -171,6 +174,8 @@ class HomeRateView extends State<HomeRate>
                             total: 60,
                             bpm: _bpm,
                             textColor: Colors.black,
+                            sp: Sp,
+                            dp: DP,
                           ),
                           // Text(
                           //   "Estimated Heart Rate(BPM)",
@@ -405,11 +410,28 @@ class HomeRateView extends State<HomeRate>
       if (_counter > 0) {
         _bpm = _bpm / _counter;
         print("_bpm ${_bpm}");
+        int Beats = _bpm.toInt();
         setState(() {
-          this._bpm = ((1 - _alpha) * this._bpm + _alpha * _bpm).toInt();
-          
-
+          int Hei = 185;
+          int Wei = 185;
+          int Agg = 22;
+          double Q = 4.5;
+          double ROB = 18.5;
+          double ET = (364.5 - 1.23 * Beats);
+          double BSA =
+              0.007184 * (math.pow(Wei, 0.425)) * (math.pow(Hei, 0.725));
+          double SV = (-6.6 +
+              (0.25 * (ET - 35)) -
+              (0.62 * Beats) +
+              (40.4 * BSA) -
+              (0.51 * Agg));
+          double PP =
+              SV / ((0.013 * Wei - 0.007 * Agg - 0.004 * Beats) + 1.307);
+          double MPP = Q * ROB;
+          this.Sp = (MPP + 3 / 2 * PP).toInt();
+          this.DP = (MPP - PP / 3).toInt();
         });
+        print("the boold $Sp / $DP");
         // print("this_bpm ${this._bpm}");
       }
       await Future.delayed(Duration(

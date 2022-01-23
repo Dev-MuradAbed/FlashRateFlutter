@@ -23,10 +23,10 @@ class CustomTimerPainter extends CustomPainter {
     paint.color = color;
     double progress =
         (current == total ? 1 : (total - current) / total) * 2 * math.pi;
-    Offset center =  Offset(size.width / 2, size.height / 2);
+    Offset center = Offset(size.width / 2, size.height / 2);
     double radius = math.min(size.width / 2, size.height / 2);
     canvas.drawArc(
-       Rect.fromCircle(center: center, radius: radius),
+      Rect.fromCircle(center: center, radius: radius),
       math.pi * 1.5,
       progress,
       false,
@@ -49,17 +49,18 @@ class CountDownTimer extends StatelessWidget {
   final double fontSize;
   final double width, height;
   final Color? bgColor, color, textColor;
+  final   int? sp,dp;
 
   CountDownTimer({
-     this.total,
-     this.current,
+    this.total,
+    this.current,
     this.width = 200,
     this.height = 200,
     this.fontSize = 32.0,
-     this.bgColor,
-     this.color,
-     this.textColor,
-     this.bpm,
+    this.bgColor,
+    this.color,
+    this.textColor,
+    this.bpm, this.sp, this.dp,
   });
 
   @override
@@ -77,11 +78,10 @@ class CountDownTimer extends StatelessWidget {
               height: height - 10.0,
               child: CustomPaint(
                 painter: CustomTimerPainter(
-                  total: total!,
-                  current: current!,
-                  backgroundColor: bgColor!,
-                  color: color!
-                ),
+                    total: total!,
+                    current: current!,
+                    backgroundColor: bgColor!,
+                    color: color!),
               ),
             ),
             Column(
@@ -103,8 +103,12 @@ class CountDownTimer extends StatelessWidget {
                       style: TextStyle(fontSize: 16, color: Colors.grey),
                       textAlign: TextAlign.center,
                     ),
+                  // Text(
+                  //   (bpm! > 30 && bpm! < 150 ? bpm.toString() : "--"),
+                  //   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                  // ),
                   Text(
-                    (bpm! > 30 && bpm! < 150 ? bpm.toString() : "--"),
+                    ('$sp / $dp' ),
                     style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                   ),
                 ]),
