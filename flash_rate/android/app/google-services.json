@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "282006549940",
+    "project_id": "endless-terra-336721",
+    "storage_bucket": "endless-terra-336721.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:282006549940:android:dc7068ff19624008ea2ee1",
+        "android_client_info": {
+          "package_name": "com.example.flash_rate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "282006549940-8j0sqm5un68hggsomdmg0cdqjs9jkns5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAhpU6r-sXfwgQmvUT8Qm4Op7kdrDKDt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "282006549940-8j0sqm5un68hggsomdmg0cdqjs9jkns5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

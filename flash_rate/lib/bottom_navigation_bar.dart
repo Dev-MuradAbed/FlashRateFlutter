@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'booldpreesure.dart';
 import 'home.dart';
+import 'map/Screens/search.dart';
 
 class bottomNavigationBar extends StatefulWidget {
   const bottomNavigationBar({Key? key}) : super(key: key);
@@ -39,7 +40,7 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
   ];
   final screens = [
     const HomePage(),
-    const HomePage(),
+     Search(),
      HomeRate(),
      HomeBooldPres(),
     const HomePage(),

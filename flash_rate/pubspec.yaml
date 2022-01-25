@@ -38,7 +38,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_bluetooth_serial:
   flutter_svg:
   curved_navigation_bar:
   camera: 
@@ -47,6 +46,12 @@ dev_dependencies:
   velocity_x:
   wakelock:
   charts_flutter:
+  google_maps_flutter:
+  geolocator:
+  provider:
+  url_launcher:
+  http:
+  flutter_rating_bar:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
