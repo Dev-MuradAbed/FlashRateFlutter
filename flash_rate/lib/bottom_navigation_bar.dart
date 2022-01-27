@@ -5,6 +5,8 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'booldpreesure.dart';
 import 'home.dart';
 import 'map/Screens/search.dart';
+import 'package:flash_rate/map/services/geolocator_service.dart';
+import 'package:provider/provider.dart';
 
 class bottomNavigationBar extends StatefulWidget {
   const bottomNavigationBar({Key? key}) : super(key: key);
@@ -16,6 +18,8 @@ class bottomNavigationBar extends StatefulWidget {
 class _bottomNavigationBarState extends State<bottomNavigationBar> {
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
   int index = 2;
+
+
   final items = [
     const Icon(
       Icons.home,
@@ -40,9 +44,9 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
   ];
   final screens = [
     const HomePage(),
-     Search(),
-     HomeRate(),
-     HomeBooldPres(),
+    Search(),
+    HomeRate(),
+    HomeBooldPres(),
     const HomePage(),
     // HomePage(),
     // // HomeRate(),
@@ -74,7 +78,9 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
               height: 60,
               items: items,
               index: index,
-              onTap: (index) => setState(() => this.index = index),
+              onTap: (index) {
+                setState(() => this.index = index);
+              },
             ),
           ),
         ),

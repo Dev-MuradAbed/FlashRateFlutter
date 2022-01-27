@@ -3,13 +3,24 @@ import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
 class PlacesService {
- static final key = 'AIzaSyCpbK_5pts7uhrQJLxpu7N3-LzePoDOMqg';
-  Future<List<Place>> getplaces(double lat, double lng) async {
-    String url =
-        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lat,$lng&hospital&rankby=distance&key=$key';
-    var response = await http.get(Uri.parse(url));
-    var json = convert.jsonDecode(response.body);
-    var jsonResult = json['results'] as List;
-   return jsonResult.map((place) => Place.fromJson(place)).toList();
+  final key = 'AIzaSyCpbK_5pts7uhrQJLxpu7N3-LzePoDOMqg';
+
+  Future<List<Place>> getPlaces({lat, lng}) async {
+    var response = await http.get(Uri.parse(
+        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lat,$lng&type=health&rankby=distance&key=$key'));
+    if (response.statusCode == 200) {
+      var json = convert.jsonDecode(response.body);
+      var jsonResults = json['results'] as List;
+      return jsonResults.map((e) => Place.fromJson(e)).toList();
+    } else {
+      throw Exception('Failed to load Place');
+    }
+    // var json = convert.jsonDecode(response.body);
+    // var jsonResults = json['results'] as List;
+
+    // var list = jsonResults.map((place) => Place.fromJson(place)).toList();
+    // print('${list[1].name}');
+
+    // return list;
   }
 }

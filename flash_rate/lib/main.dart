@@ -1,11 +1,12 @@
 import 'package:flash_rate/map/Screens/search.dart';
+import 'package:flash_rate/map/models/place.dart';
 import 'package:flash_rate/map/services/geolocator_service.dart';
 import 'package:flash_rate/theme.dart';
 import 'package:flutter/material.dart';
 import 'bottom_navigation_bar.dart';
 import 'dart:math' as math;
 import 'package:provider/provider.dart';
-
+import 'package:geolocator/geolocator.dart';
 import 'map/services/places.dart';
 // _bpm 317.7423339732551
 //  this_bpm 184
@@ -26,16 +27,9 @@ int? firstRun;
 //   ));
 // }
 void main() {
-  runApp(
-
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => GeoLocatorServise()),
-      ],
-      child:  MyApp(),
-    ),
-  );
+  runApp(MyApp());
 }
+
 // int Beats = 117.62042103121564.toInt();
 // int Hei = 185;
 // int Wei = 185;
@@ -57,20 +51,33 @@ void main() {
 
 class MyApp extends StatelessWidget {
   final locatorService = GeoLocatorServise();
+  final placesService = PlacesService();
   @override
   Widget build(BuildContext context) {
     bool isDarkModeEnabled = false;
-    final locatorService = GeoLocatorServise();
-    final placesService = PlacesService();
-    return MaterialApp(
-      themeMode: isDarkModeEnabled ? ThemeMode.dark : ThemeMode.light,
-      theme: MyThemes.lightTheme(context),
-      darkTheme: MyThemes.darkTheme(context),
-      debugShowCheckedModeBanner: false,
-      // home: const bottomNavigationBar(),
-      home: Search(),
-      // ),
-      //  ),
+
+    return MultiProvider(
+      providers: [
+        FutureProvider(
+          create: (context) => locatorService.getLocation(),
+          initialData: null,
+        ),
+        ProxyProvider<Position, Future<List<Place>>>(
+          update: (context, position, places) {
+            return placesService.getPlaces(lat: position.altitude, lng:position.longitude);
+          },
+        )
+      ],
+      child: MaterialApp(
+        themeMode: isDarkModeEnabled ? ThemeMode.dark : ThemeMode.light,
+        theme: MyThemes.lightTheme(context),
+        darkTheme: MyThemes.darkTheme(context),
+        debugShowCheckedModeBanner: false,
+        home: const bottomNavigationBar(),
+        // home: Search(),
+        // ),
+        //  ),
+      ),
     );
   }
 }

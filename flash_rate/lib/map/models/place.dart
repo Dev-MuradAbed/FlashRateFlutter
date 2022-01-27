@@ -1,21 +1,25 @@
-import 'package:flash_rate/map/models/geometry.dart';
+import 'geometry.dart';
 
 class Place {
-  final String? name;
-  final String? rating;
-  final String? userRatinCount;
+  final String name;
+   var rating;
+   var userRatingCount;
   final String? vicinity;
-  Geometry? geometry;
+  final Geometry geometry;
 
-  Place({this.name, this.rating, this.userRatinCount, this.vicinity});
-  Place.fromJson(Map<dynamic, dynamic> parsedJson)
-      : name = parsedJson['name'],
-        rating = (parsedJson['rating'] != null)
-            ? parsedJson['rating'].toDouble()
-            : null,
-        userRatinCount = (parsedJson['user_ratings_total'] != null)
-            ? parsedJson['user_ratings_total']
-            : null,
-        vicinity = parsedJson['vicinity'],
-        geometry = Geometry.fromJson(parsedJson['geometry']);
+  Place(
+      {required this.geometry,
+      required this.name,
+      required this.rating,
+      required this.userRatingCount,
+      required this.vicinity});
+
+ factory Place.fromJson(Map<dynamic, dynamic> parsedJson) {
+    return Place(
+        name: parsedJson['name'],
+        geometry: Geometry.fromJson(parsedJson['geometry']),
+        rating: parsedJson['rating'],
+        vicinity: parsedJson['vicinity'],
+        userRatingCount: parsedJson['user_ratings_total']);
+  }
 }
