@@ -34,10 +34,6 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
   flutter_svg:
   curved_navigation_bar:
   camera: 
@@ -52,6 +48,14 @@ dev_dependencies:
   url_launcher:
   http:
   flutter_rating_bar:
+  flutter_polyline_points:
+  google_directions_api: 
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  # flutter_polyline_points: 
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -75,6 +79,7 @@ flutter:
   assets:
     - assets/svg/heartbeat-heart-health-pulse-smartphone-medical-rate-svgrepo-com.svg
     - assets/svg/o2-logo-svg-vector.svg
+    # - assets/hospital.png
 
   #   - images/a_dot_ham.jpeg
 
