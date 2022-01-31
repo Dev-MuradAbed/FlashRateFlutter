@@ -8,6 +8,8 @@ import 'map/Screens/search.dart';
 import 'package:flash_rate/map/services/geolocator_service.dart';
 import 'package:provider/provider.dart';
 
+import 'news/screens/home_screen.dart';
+
 class bottomNavigationBar extends StatefulWidget {
   const bottomNavigationBar({Key? key}) : super(key: key);
 
@@ -43,7 +45,14 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
     ),
   ];
   final screens = [
-    const HomePage(),
+    /**
+     * screen map: that help pepole to find a near hosptail if you want and sent pepole location to hosptal to send amplce to the man. 
+     * screen montor: that have three screen 1.blood pre.. 2.rate bpm  3.list of the result of the rate bpm and blood
+     * screen news: that show user the new news about health and another thinks
+     * screen todo: that can user recive notfication in time maedsin  and time vist doctor that after add detail by hosptail or doctor
+     * screen profil:
+     */
+     HomeNews(),
     Search(),
     HomeRate(),
     HomeBooldPres(),

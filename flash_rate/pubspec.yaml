@@ -50,6 +50,7 @@ dependencies:
   flutter_rating_bar:
   flutter_polyline_points:
   google_directions_api: 
+  cached_network_image:
 
 dev_dependencies:
   flutter_test:
